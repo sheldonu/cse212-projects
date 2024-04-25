@@ -38,8 +38,20 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        
 
-        return new double[0]; // replace this return statement with your own
+        // create a new array to hold the multiple values
+        double[] numbers = new double[length];
+
+        // use a for loop to go through the length of multiples
+        for (int i = 0; i < length; i++)
+        {
+            // calculate the multiple and store it in the array
+            numbers[i] = number * (i + 1);
+        }
+
+        // Return the array of multiples
+        return numbers;
     }
     
     /// <summary>
@@ -56,6 +68,15 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // use a for statement to rotate the list
+        for (int i = 0; i < amount; i++)
+        {
+            // in order to rotate to the right, take out last element and put it to the beginning
+            int lastElement = data[data.Count - 1];
+            data.RemoveAt(data.Count - 1);
+            data.Insert(0, lastElement);
+        }
 
     }
 }
