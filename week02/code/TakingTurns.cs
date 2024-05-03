@@ -83,6 +83,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found: There is no error message displayed, instead it just says "No one in the queue".
+        // Defect(s) Found: The error message is displayed so im sure it is correct.
     }
 }
