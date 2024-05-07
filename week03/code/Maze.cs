@@ -29,7 +29,12 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveLeft() {
-        // FILL IN CODE
+        if (_mazeMap.ContainsKey((_currX, _currY)) && _mazeMap[(_currX, _currY)][0]) {
+            _currX--;
+        }
+        else {
+            Console.WriteLine("That's a wall...");
+        }
     }
 
     /// <summary>
@@ -37,7 +42,12 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveRight() {
-        // FILL IN CODE
+        if (_mazeMap.ContainsKey((_currX, _currY)) && _mazeMap[(_currX, _currY)][1]) {
+            _currX++;
+        }
+        else {
+            Console.WriteLine("That's a wall...");
+        }
     }
 
     /// <summary>
@@ -45,7 +55,12 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveUp() {
-        // FILL IN CODE
+        if (_mazeMap.ContainsKey((_currX, _currY)) && _mazeMap[(_currX, _currY)][2]) {
+            _currY--;
+        }
+        else {
+            Console.WriteLine("That's a wall...");
+        }
     }
 
     /// <summary>
@@ -53,7 +68,12 @@ public class Maze {
     /// can't move, then display "Can't go that way!"
     /// </summary>
     public void MoveDown() {
-        // FILL IN CODE
+        if (_mazeMap.ContainsKey((_currX, _currY)) && _mazeMap[(_currX, _currY)][3]) {
+            _currY++;
+        }
+        else {
+            Console.WriteLine("That's a wall...");
+        }
     }
 
     public void ShowStatus() {

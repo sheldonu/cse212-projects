@@ -108,9 +108,29 @@ public static class SetsAndMapsTester {
     /// </summary>
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     private static void DisplayPairs(string[] words) {
-        // To display the pair correctly use something like:
-        // Console.WriteLine($"{word} & {pair}");
-        // Each pair of words should displayed on its own line.
+        HashSet<string> visited = new HashSet<string>();
+
+        string Reverse(string word)
+        {
+            char[] charArray = word.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
+        foreach (string word in words)
+        {
+            string reversed = Reverse(word);
+
+            // See if reverse is in set
+            if (visited.Contains(reversed))
+            {
+            
+                Console.WriteLine($"{word} & {reversed}");
+            }
+
+            // Add the current word to the set
+            visited.Add(word);
+        }
     }
 
     /// <summary>
@@ -131,7 +151,18 @@ public static class SetsAndMapsTester {
         var degrees = new Dictionary<string, int>();
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
-            // Todo Problem 2 - ADD YOUR CODE HERE
+            if (fields.Length >= 4)
+            {
+                string degree = fields[3].Trim();
+                if (degrees.ContainsKey(degree))
+                {
+                    degrees[degree]++;
+                }
+                else
+                {
+                    degrees[degree] = 1;
+                }
+            }
         }
 
         return degrees;
@@ -157,8 +188,44 @@ public static class SetsAndMapsTester {
     /// # Problem 3 #
     /// #############
     private static bool IsAnagram(string word1, string word2) {
-        // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // Convert words to lowercase and remove spaces
+        word1 = word1.ToLower().Replace(" ", "");
+        word2 = word2.ToLower().Replace(" ", "");
+
+        // Check if the lengths of words are equal after removing spaces
+        if (word1.Length != word2.Length)
+            return false;
+
+        // Dictionary to count character frequencies in word1
+        Dictionary<char, int> dict1 = new Dictionary<char, int>();
+        // Dictionary to count character frequencies in word2
+        Dictionary<char, int> dict2 = new Dictionary<char, int>();
+
+        // Count character frequencies in word1
+        foreach (char c in word1)
+        {
+            if (dict1.ContainsKey(c))
+                dict1[c]++;
+            else
+                dict1[c] = 1;
+        }
+
+        // Count character frequencies in word2
+        foreach (char c in word2)
+        {
+            if (dict2.ContainsKey(c))
+                dict2[c]++;
+            else
+                dict2[c] = 1;
+        }
+
+        // Compare character frequencies
+        foreach (var kvp in dict1)
+        {
+            if (!dict2.ContainsKey(kvp.Key) || dict2[kvp.Key] != kvp.Value)
+                return false;
+        }
+        return true;
     }
 
     /// <summary>
