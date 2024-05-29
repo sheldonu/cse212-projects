@@ -24,12 +24,34 @@ public class Node {
     }
 
     public bool Contains(int value) {
-        // TODO Start Problem 2
-        return false;
+        if (value == Data) {
+            return true;
+        } else if (value < Data) {
+            if (Left != null) {
+                return Left.Contains(value);
+            } else {
+                return false;
+            }
+        } else {
+            if (Right != null) {
+                return Right.Contains(value);
+            } else {
+                return false;
+            }
+        }
     }
 
     public int GetHeight() {
-        // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+        // If both left and right children are null, this is a leaf node, and the height is 1
+        if (Left == null && Right == null) {
+            return 1;
+        }
+
+        // Get the height of the left and right subtrees
+        int leftHeight = Left?.GetHeight() ?? 0;
+        int rightHeight = Right?.GetHeight() ?? 0;
+
+        // The height of the current node is 1 plus the maximum of the heights of the left and right subtrees
+        return 1 + Math.Max(leftHeight, rightHeight);
     }
 }
