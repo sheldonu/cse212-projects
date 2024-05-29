@@ -10,14 +10,13 @@ public class Node {
     public void Insert(int value) {
         if (value < Data) {
             // Insert to the left
-            if (Left is null)
+            if (Left == null)
                 Left = new Node(value);
             else
                 Left.Insert(value);
-        }
-        else {
+        } else if (value > Data) {
             // Insert to the right
-            if (Right is null)
+            if (Right == null)
                 Right = new Node(value);
             else
                 Right.Insert(value);
